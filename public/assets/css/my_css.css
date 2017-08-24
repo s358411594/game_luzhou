@@ -1,0 +1,159 @@
+.select_one{
+    width: 100px;
+    text-align: center;
+    float: left;
+}
+.select_one label{
+    display: inline-block;
+    width: 50px;
+}
+.middle-center{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+    margin: 11px;
+    padding: 0 0;
+}
+.am-input-group{
+    width: 300px;
+    margin: 10px 0  10px 0 ;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.am-input-group span{
+    width: 100%;
+}
+.house_type{
+    display: flex;
+}
+.house_type_wrap{
+    padding: 0 10px;
+}
+.detail th{
+    text-align: center;
+}
+.detail td{
+    text-align: center;
+    height: 60px;
+    padding: 0;
+    line-height: 60px !important;
+}
+.details{
+    display: none;
+}
+#agency_detail{
+    display: block;
+}
+.am-btn-secondary{
+    margin-right: 20px;
+}
+.search{
+    margin: 0 ;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+}
+#vip_detail .am-g{
+    height: 100%;
+}
+#vip_detail .listbiaoti {
+    padding-bottom: 0;
+}
+#vip_detail .search .am-input-group-btn{
+    width: 20%;
+}
+#vip_detail .search input{
+    width: 80%;
+}
+#vip_detail .search .am-btn{
+    width: 100%;
+}
+.modal_box .list {
+    display: flex;
+    overflow: hidden;
+    background-color: white;
+    margin-top: 6px;
+    margin-bottom: 0;
+    align-items: center;
+    height: 70px;
+}
+.modal_box .list div {
+    overflow: hidden;
+}
+.modal_box .list div {
+    width: 118px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    margin: 0 10px 0 0;
+    text-align: center;
+    border: 1px solid #e8e8e8;
+    background-color: #f7f7f7;
+    color: #999;
+    cursor: pointer;
+}
+.modal_box .list div:last-child{
+    margin-right: 0;
+}
+.modal_box form div {
+    font-size: 14px;
+}
+.point_else {
+    display: flex;
+    width: 248px;
+    font-size: 14px;
+    text-align: center;
+    float: left;
+    border: 1px solid #e8e8e8;
+    position: relative;
+    overflow: hidden;
+    background: #f7f7f7;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+.point_else input{
+    background: #f7f7f7;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+}
+.recharge,.set_password{
+    background-color: white;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+}
+.modal_box{
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: auto;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.modal_box button{
+    margin-right: 0;
+    width: 100%;
+}
+.border_red{
+    border: 1px solid red !important;
+}
+#card_num>div{
+    display: flex;
+}
+#card_num>div>div{
+    width: 50%;
+}

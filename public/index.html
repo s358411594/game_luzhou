@@ -1,0 +1,321 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>泸州游戏</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="stylesheet" href="assets/css/my_css.css">
+    <!--[if lte IE 9]><p class="browsehappy">升级你的浏览器吧！ <a href="http://se.360.cn/" target="_blank">升级浏览器</a>以获得更好的体验！
+</p><![endif]-->
+</head>
+
+<body>
+<header class="am-topbar admin-header">
+    <div class="am-topbar-brand"><img src="assets/i/logo.png"></div>
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse"></div>
+</header>
+
+<div class="am-cf admin-main">
+    <div class="nav-navicon admin-main admin-sidebar">
+        <div class="sideMenu am-icon-dashboard" style="color:#aeb2b7; margin: 10px 0 0 0;"> 欢迎系统管理员：清风抚雪</div>
+        <div class="sideMenu">
+            <h3 class="am-icon-flag on" id="agency"><em></em> <a href="#">代理管理</a></h3>
+            <h3 class="am-icon-cart-plus" id="house"><em></em> <a href="#">房卡类型</a></h3>
+            <h3 class="am-icon-users" id="detail"><em></em> <a href="#">代理详情</a></h3>
+            <h3 class="am-icon-volume-up" id="vip"><em></em> <a href="#">会员管理</a></h3>
+            <h3 class="am-icon-gears" id="history"><em></em> <a href="#">流水查询</a></h3>
+            <h3 class="am-icon-save" id="financing"><em></em> <a href="#">财务查询</a></h3>
+        </div>
+        <!-- sideMenu End -->
+    </div>
+    <div class=" admin-content">
+        <div class="daohang">
+        </div>
+        <div class="admin">
+            <!--代理管理-->
+            <div id="agency_detail" class="middle-center details">
+                <div class="listbiaoti am-cf">
+                    <ul class="am-icon-flag on">代理管理</ul>
+                </div>
+                <div class="middle-center">
+                    <div class="am-input-group">
+                        <span class="am-input-group-div">代理级别</span>
+                        <select name="" id="rank" class="am-form-field rank" >
+                            <option value="" agency="0">总代理</option>
+                            <option value="" agency="1">一级代理</option>
+                            <option value="" agency="2">二级代理</option>
+                        </select>
+                    </div>
+                    <div class="am-input-group">
+                        <span class="am-input-group-div">会员/代理名称</span>
+                        <select name="" id="member" class="am-form-field member" >
+                            <option value="" v-for="name in names" v-bind:name_id="name.id" v-bind:agency="name.agency">{{name.v_name}}</option>
+                        </select>
+                    </div>
+                    <div class="am-input-group">
+                        <span class="am-input-group-div">折扣设置</span>
+
+                        <input type="text" id="discount" class="am-form-field"  onkeyup="discount(this)" >
+                        <span class="am-input-group-div">折</span>
+                    </div>
+                    <div></div>
+                    <button type="button" class="am-btn am-btn-secondary agency save">保存</button>
+                </div>
+
+            </div>
+            <!--房卡类型-->
+            <div id="house_detail" class="middle-center details">
+                <div class="listbiaoti am-cf">
+                    <ul class="am-icon-flag on">房卡类型</ul>
+                </div>
+                <div class="middle-center">
+                    <div class="am-input-group">
+                        <span class="am-input-group-div">大二</span>
+                        <input type="text" class="am-form-field" value="" id="RoomCard_lzd2" oninput="this.value=this.value.replace(/\D/g,'').replace(/^0+(?=\d)/,'')">
+                        <span class="am-input-group-div">元/张</span>
+                    </div>
+
+                    <div class="am-input-group">
+                        <span class="am-input-group-div">麻将</span>
+                        <input type="text" class="am-form-field" value="" id="RoomCard_lzmj" oninput="this.value=this.value.replace(/\D/g,'').replace(/^0+(?=\d)/,'')">
+                        <span class="am-input-group-div">元/张</span>
+                    </div>
+                    <button type="button" class="am-btn am-btn-secondary room save">保存</button>
+                </div>
+            </div>
+            <!--代理详情-->
+            <div id="detail_detail" class="details">
+                <div class="listbiaoti am-cf">
+                    <ul class="am-icon-flag on">代理详情</ul>
+                </div>
+                <form class="am-form am-g detail">
+                    <table width="100%"
+                           class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover">
+                        <thead>
+                        <tr class="am-success">
+                            <th class="table-check"><input type="checkbox"></th>
+                            <th class="table-id">ID</th>
+                            <th class="table-title">代理人</th>
+                            <th class="table-type">级别</th>
+                            <th class="table-author am-hide-sm-only">房卡数量</th>
+                            <th class="table-author am-hide-sm-only">充值/退卡</th>
+                            <th class="table-date am-hide-sm-only">找回密码</th>
+                            <th width="130px" class="table-set">已消费金额</th>
+                            <th>禁用</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td id="PlayerID" class="PlayerID"></td>
+                            <td><a href="#" id="NickName" class="NickName"></a></td>
+                            <td><span class="rank"></span>级代理</td>
+                            <td class="am-hide-sm-only" id="card_num">
+                                <div>
+                                    <div>
+                                        <div>大二</div>
+                                        <div>13</div>
+                                    </div>
+                                    <div>
+                                        <div>麻将</div>
+                                        <div>234</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="am-hide-sm-only">
+                                <button type="button" class="am-btn am-btn-secondary modal do_recharge">充值</button>
+                                <button type="button" class="am-btn am-btn-success">退卡</button>
+                            </td>
+                            <td class="am-hide-sm-only">
+                                <button type="button" class="am-btn am-btn-warning do_s_password modal">找回</button>
+                            </td>
+                            <td id="consume">
+
+                            </td>
+                            <td class="am-hide-sm-only">
+                                <button type="button" class="am-btn am-btn-danger">禁用</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </form>
+            </div>
+            <!--会员管理-->
+            <div id="vip_detail" class="details">
+                <div class="listbiaoti am-cf">
+                    <ul class="am-icon-flag on">会员管理</ul>
+
+                            <div class="am-input-group search">
+                              <span class="am-input-group-btn">
+                                <button class="am-btn am-btn-default" type="button" v-on:click="search">
+                                    <span class="am-icon-search"></span>
+                                </button>
+                              </span>
+                                <input type="text" class="am-form-field">
+                            </div>
+
+                </div>
+                <form class="am-form am-g detail">
+                    <table width="100%"
+                           class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover">
+                        <thead>
+                        <tr class="am-success">
+                            <th class="table-check"><input type="checkbox"></th>
+                            <th class="table-id">ID</th>
+                            <th class="table-title">会员名</th>
+                            <th class="table-type">用户id</th>
+                            <th class="table-author am-hide-sm-only">剩余房卡</th>
+                            <th class="table-author am-hide-sm-only">充值/退卡</th>
+                        </tr>
+                        </thead>
+                        <tbody id="manage">
+                        <tr v-for="data in vip_data">
+                            <td><input type="checkbox"></td>
+                            <td class="" >{{data.id}}</td>
+                            <td><a href="#" class="">{{data.v_name}}</a></td>
+                            <td class="">{{data.user_id}}</td>
+                            <td class="am-hide-sm-only ">{{data.residue_card_num}}</td>
+                            <td class="am-hide-sm-only">
+                                <button type="button" class="am-btn am-btn-secondary">充值</button>
+                                <button type="button" class="am-btn am-btn-success">退卡</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </form>
+            </div>
+            <!--流水查询-->
+            <div id="history_detail" class="details">
+                <div class="listbiaoti am-cf">
+                    <ul class="am-icon-flag on">流水查询</ul>
+                </div>
+                <form class="am-form am-g detail">
+                    <table width="100%"
+                           class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover">
+                        <thead>
+                        <tr class="am-success">
+                            <th class="table-check"><input type="checkbox"></th>
+                            <th class="table-id">ID</th>
+                            <th class="table-title">日期</th>
+                            <th class="table-type">用户id</th>
+                            <th class="table-author am-hide-sm-only">用户类型</th>
+                            <th class="table-author am-hide-sm-only">操作代理</th>
+                            <th class="table-author am-hide-sm-only">事由</th>
+                            <th class="table-author am-hide-sm-only">数量</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td class="PlayerID"></td>
+                            <td class="water_date"></td>
+                            <td><a href="#"><span class="OpenID"></span>(<span class="NickName"></span>)</a></td>
+                            <td><span class="rank"></span>级代理</td>
+                            <td class="am-hide-sm-only agency_name"></td>
+                            <td class="am-hide-sm-only reason">
+
+                            </td>
+                            <td class="water_num"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </form>
+            </div>
+            <!--财务查询-->
+            <div id="financing_detail" class="details">
+                <div class="listbiaoti am-cf">
+                    <ul class="am-icon-flag on">财务查询</ul>
+                </div>
+                <form class="am-form am-g detail">
+                    <table width="100%"
+                           class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover">
+                        <thead>
+                        <tr class="am-success">
+                            <th class="table-author am-hide-sm-only ">今日充值</th>
+                            <th class="table-author am-hide-sm-only ">本月充值</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="recharge_day"></td>
+                            <td class="recharge_month"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+            <div class="foods">
+                <ul>聚米粒出品</ul>
+                <dl><a href="" title="返回头部" class="am-icon-btn am-icon-arrow-up"></a></dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal_box">
+    <!--充值-->
+    <div class="recharge">
+        <select data-am-selected>
+            <option value="a" selected>大二</option>
+            <option value="b" >麻将</option>
+        </select>
+        <h1>充值：</h1>
+        <div class="list list2" id="credit_products">
+            <div id="credit_amount_50" class="point_amount_div click" amount="50)">50</div>
+            <div id="credit_amount_100" class="point_amount_div " amount="100)">100</div>
+            <div id="credit_amount_150" class="point_amount_div" amount="150)">150</div>
+            <div id="credit_amount_300" class="point_amount_div" amount="300)">300</div>
+            <div id="credit_amount_500" class="point_amount_div" amount="500)">500</div>
+            <div id="credit_amount_1000" class="point_amount_div" amount="1000)">1000</div>
+            <div class="newInput point_amount_div">
+                <div class="point_else" for="credit_amount_input">
+                    <input type="text" placeholder="输入点数">
+                </div>
+            </div>
+        </div>
+        <button type="button" class="am-btn am-btn-secondary agency save">确定</button>
+    </div>
+    <!--密码设置-->
+    <div class="set_password">
+        <div class="am-input-group">
+            <span class="am-input-group-label">旧密码</span>
+            <input type="text" class="am-form-field" placeholder="Username" v-model="message">
+        </div>
+        <div class="am-input-group">
+            <span class="am-input-group-label">新密码</span>
+            <input type="password" class="am-form-field" placeholder="Username">
+        </div>
+        <div class="am-input-group">
+            <span class="am-input-group-label">确认新密码</span>
+            <input type="password" class="am-form-field" placeholder="Username" v-model="message">
+        </div>
+        <button type="button" class="am-btn am-btn-secondary agency save">确定</button>
+    </div>
+</div>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/polyfill/rem.min.js"></script>
+<script src="assets/js/polyfill/respond.min.js"></script>
+<script src="assets/js/amazeui.legacy.js"></script>
+<script src="./vue/dist/vue.min.js"></script>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<script src="js/index_fns.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>
