@@ -103,7 +103,7 @@ function rank_discount() {
             }
             else {
                 var total=[Number(result[0].recharge)+Number(recharge)];
-                console.log(total)
+                console.log(total);
                 var update = 'UPDATE agency SET recharge = ? WHERE PlayerID = 1';
                 connection.query(update, total, function (err, result) {
                     if (err) {
