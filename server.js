@@ -41,3 +41,4 @@ app.post('/set_game_type',urlencodedParser, function (req, res) {
 var server = app.listen(8081, function () {
     console.log("8081")
 });
+console.log(22)
