@@ -37,26 +37,6 @@ function show_data() {
         });
 
 
-        // // 代理管理
-        // $(".rank").val(value.rank);
-        // $("#discount").val(value.discount);
-        // // 房卡类型
-        // $("#RoomCard_lzd2").val(value.RoomCard_lzd2);
-        // $("#RoomCard_lzmj").val(value.RoomCard_lzmj);
-        // // 代理详情
-        // $(".PlayerID").text(value.PlayerID);
-        // $(".NickName").text(value.NickName);
-        // // $("#card_num").text(value.card_num);
-        // $("#consume").text(value.consume);
-        // //流水查询
-        // $(".water_date").text(value.water_date.substring(0,10));
-        // $(".agency_name").text(value.agency_name);
-        // $(".reason").text(value.reason);
-        // $(".water_num").text(value.water_num);
-        // //财务查询
-        // $(".recharge_day").text(value.recharge_day);
-        // $(".recharge_month").text(value.recharge_month);
-
 }
 // 代理管理,保存数据
 $(".save.am-btn").click(function () {
@@ -87,7 +67,7 @@ $.ajax({
     }
 });
 //房卡类型，保存数据
-$("#room").click(function () {
+$(".room").click(function () {
     var RoomCard_lzd2=$("input[id='RoomCard_lzd2']").val();//获取大二数据
     var RoomCard_lzmj=$("input[id='RoomCard_lzmj']").val();//获取麻将数据
     console.log(RoomCard_lzd2);
@@ -98,6 +78,9 @@ $("#room").click(function () {
         data: {
             id:1,
             money:RoomCard_lzd2
+        },
+        success:function (data) {
+            console.log(data)
         }
     });
     $.ajax({
@@ -106,6 +89,9 @@ $("#room").click(function () {
         data: {
             id:2,
             money:RoomCard_lzmj
+        },
+        success:function (data) {
+            alert(data)
         }
     })
 });
@@ -128,7 +114,9 @@ function show_vip_data() {
 $(".point_amount_div").click(function () {
     $(this).addClass("border_red").siblings().removeClass("border_red")
 });
-$(".modal").click(function () {
+console.log($(".do_recharge")[0])
+$(document).on("click",".do_recharge",function () {
+    console.log(3)
     $(".modal_box").css({display:"flex"});
     if($(this).hasClass("do_recharge")){
         $(".recharge").css({display:"block"}).siblings().css({display:"none"})

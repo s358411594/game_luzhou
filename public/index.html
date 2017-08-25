@@ -137,7 +137,7 @@
                                 <button type="button" class="am-btn am-btn-success">退卡</button>
                             </td>
                             <td class="am-hide-sm-only">
-                                <button type="button" class="am-btn am-btn-warning do_s_password modal">找回</button>
+                                <button type="button" class="am-btn am-btn-warning do_s_password ">找回</button>
                             </td>
                             <td id="consume">
                                 {{todo.residue_card_num}}
@@ -264,6 +264,9 @@
         </div>
     </div>
 </div>
+
+<!--充值弹出模态框-->
+
 <div class="modal_box">
     <!--充值-->
     <div class="recharge">
@@ -289,10 +292,6 @@
     </div>
     <!--密码设置-->
     <div class="set_password">
-        <div class="am-input-group">
-            <span class="am-input-group-label">旧密码</span>
-            <input type="text" class="am-form-field" placeholder="Username" v-model="message">
-        </div>
         <div class="am-input-group">
             <span class="am-input-group-label">新密码</span>
             <input type="password" class="am-form-field" placeholder="Username">
