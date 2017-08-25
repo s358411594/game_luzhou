@@ -28,6 +28,7 @@ function rank_discount() {
     };
     //修改房卡类型
     this.set_game_type=function (data,res) {
+        console.log(data)
         var update = 'UPDATE  game_type set money = ? WHERE id = '+data["id"]+'';
         var  updateSqlParams = [data["money"]];
         connection.query(update, updateSqlParams, function (err, result) {
