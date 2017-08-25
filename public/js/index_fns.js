@@ -25,16 +25,7 @@ function show_data() {
                     data:{
                         todos:data
                     }
-                    //     todos:[
-                    //         {v_name:NickName},
-                    //         {v_name:'小乔丹'}
-                    //         ]
-                    //
-                    // }
                 });
-                // $("#NickName").attr("value",data[0].v_name);
-                // $("#rank").attr("value",data[0].agency);
-                // console.log($("#NickName").attr("value",data[0].v_name));
             }
         });
 
