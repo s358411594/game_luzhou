@@ -1,0 +1,10 @@
+diff a/public/index.html b/public/index.html	(rejected hunks)
+@@ -80,8 +80,6 @@
+                 </div>
+                 <div class="middle-center">
+                     <div class="am-input-group">
+-                        <span class="am-input-group-div">大二</span>
+-                        <input type="text" class="am-form-field" value="" id="RoomCard_lzd2" oninput="this.value=this.value.replace(/\D/g,'').replace(/^0+(?=\d)/,'')">
+                         <span class="am-input-group-div" id="1">大二</span>
+                         <input type="text" class="am-form-field" value="" id="RoomCard_lzd2" v-bind:name.money="name.money" oninput="this.value=this.value.replace(/\D/g,'').replace(/^0+(?=\d)/,'')">
+                         <span class="am-input-group-div">元/张</span>
