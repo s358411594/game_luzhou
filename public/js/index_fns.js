@@ -26,6 +26,13 @@ function show_data() {
                         todos:data
                     }
                 });
+                //会员管理数据初始化
+                var manage=new Vue({
+                    el:'#manage',
+                    data:{
+                        vip_data:data
+                    }
+                })
             }
         });
 
