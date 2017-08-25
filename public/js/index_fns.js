@@ -196,6 +196,6 @@ $(".set_password button").click(function () {
     });
 });
 
-console.log(666)
+console.log(888)
 
 
