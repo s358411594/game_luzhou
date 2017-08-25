@@ -20,16 +20,20 @@ function show_data() {
                         console.log();
 //代理详情数据初始化
 //                 var NickName=$("#NickName").attr("value",data[0].v_name);
-                var PlayerID =new Vue({
-                    el:'#PlayerID',
+                var message =new Vue({
+                    el:'#message',
                     data:{
-                        name:[
-                            {v_name:NickName}
-                            ]
-
+                        todos:data
                     }
+                    //     todos:[
+                    //         {v_name:NickName},
+                    //         {v_name:'小乔丹'}
+                    //         ]
+                    //
+                    // }
                 });
-
+                // $("#NickName").attr("value",data[0].v_name);
+                // $("#rank").attr("value",data[0].agency);
                 // console.log($("#NickName").attr("value",data[0].v_name));
             }
         });
