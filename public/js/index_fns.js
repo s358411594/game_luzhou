@@ -196,9 +196,18 @@ $(".set_password button").click(function () {
     });
 });
 
-console.log(66)
-
-
+$.ajax({
+    type: 'post',
+    url: "/recharge",
+    data:{
+        id:1,
+        daer_num:2,
+        majiang_num:23
+    },
+    success: function (data) {
+        console.log(data)
+    }
+});
 
 
 
