@@ -16,9 +16,21 @@ function show_data() {
                     }
                 });
                         $("select option").eq(data[0].agency).attr("selected","selected");
-                        // console.log(data[0].discount);
                         $("#discount").attr("value",data[0].discount);
+                        console.log();
+//代理详情数据初始化
+//                 var NickName=$("#NickName").attr("value",data[0].v_name);
+                var PlayerID =new Vue({
+                    el:'#PlayerID',
+                    data:{
+                        name:[
+                            {v_name:NickName}
+                            ]
 
+                    }
+                });
+
+                // console.log($("#NickName").attr("value",data[0].v_name));
             }
         });
 
@@ -47,7 +59,7 @@ function show_data() {
 // 代理管理,保存数据
 $(".save.am-btn").click(function () {
     var agency=$("#rank option:selected").attr("agency");//获取代理
-    console.log(agency)
+    // console.log(agency)
     var discount=$("input[id='discount']").val();//获取价格值
     var id=$("#member option:selected").attr("name_id");//获取会员id
     $.ajax({
@@ -59,13 +71,10 @@ $(".save.am-btn").click(function () {
             discount:discount
                }
             });
-    // $("select option").eq(data[id]).attr("selected","selected");
-    //     $("#discount").attr("value",data[0].discount);
-
 });
 
 
-//拿到大二，麻将数据
+//初始化大二，麻将数据
 $.ajax({
     type: 'get',
     url: "/game_type",
@@ -73,16 +82,14 @@ $.ajax({
         console.log(data);
         $("#RoomCard_lzd2").attr("value",data[0].money);
         $("#RoomCard_lzmj").attr("value",data[1].money);
-
     }
-
 });
 //房卡类型，保存数据
-$(".save.room.am-btn").click(function () {
+$("#room").click(function () {
     var RoomCard_lzd2=$("input[id='RoomCard_lzd2']").val();//获取大二数据
-    // var RoomCard_lzmj=$("input[id='RoomCard_lzmj']").val();//获取麻将数据
-    // console.log(RoomCard_lzd2);
-    // console.log(RoomCard_lzmj);
+    var RoomCard_lzmj=$("input[id='RoomCard_lzmj']").val();//获取麻将数据
+    console.log(RoomCard_lzd2);
+    console.log(RoomCard_lzmj);
     $.ajax({
         type: 'post',
         url: "/set_game_type",
@@ -90,13 +97,27 @@ $(".save.room.am-btn").click(function () {
             id:1,
             money:RoomCard_lzd2
         }
+    });
+    $.ajax({
+        type: 'post',
+        url: "/set_game_type",
+        data: {
+            id:2,
+            money:RoomCard_lzmj
+        }
     })
 });
+//代理详情
+// $(".PlayerID").text(value.PlayerID);
+// $(".NickName").text(value.NickName);
+// // $("#card_num").text(value.card_num);
+// $("#consume").text(value.consume);
+
 //会员管理
 function show_vip_data() {
         $.ajax({
             type: 'get',
-            url: "/vip",
+            url: "/vip"
 
         });
 }
