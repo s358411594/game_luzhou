@@ -183,7 +183,8 @@ $(".set_password button").click(function () {
         }
     });
 });
-console.log(11)
+
+console.log(66)
 
 
 

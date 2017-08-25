@@ -21,8 +21,8 @@ app.post('/check',urlencodedParser, function (req, res) {
     mysqle.check(res,name);
 });
 app.post('/recharge',urlencodedParser, function (req, res) {
-    var recharge=req.body.recharge;
-    mysqle.recharge(res,recharge);
+    var data=req.body;
+    mysqle.recharge(res,data);
 });
 app.post('/set_password',urlencodedParser, function (req, res) {
     var recharge=req.body.recharge;

@@ -95,17 +95,20 @@ function rank_discount() {
         });
     };
     //充值
-    this.recharge=function (res,recharge) {
-        var  sql = 'SELECT recharge FROM agency WHERE PlayerID = 1';
+    this.recharge=function (res,data) {
+        var  sql = 'SELECT * FROM vip WHERE id = '+data["id"]+'';
         connection.query(sql,function (err, result) {
             if(err){
                 console.log('[SELECT ERROR] - ',err.message);
                 return;
             }
             else {
-                var total=[Number(result[0].recharge)+Number(recharge)];
-                console.log(total);
-                var update = 'UPDATE agency SET recharge = ? WHERE PlayerID = 1';
+                console.log(data)
+                var s_data=JSON.parse(JSON.stringify(result))[0];
+                var majiang_num=Number(s_data.majiang_num)+Number(data.majiang_num);
+                var daer_num=Number(s_data.daer_num)+Number(data.daer_num);
+                var total=[majiang_num,daer_num];
+                var update = 'UPDATE vip SET majiang_num = ?,daer_num=? WHERE id = '+data["id"]+'';
                 connection.query(update, total, function (err, result) {
                     if (err) {
                         console.log('[UPDATE ERROR] - ', err.message);
@@ -117,7 +120,7 @@ function rank_discount() {
                 });
             }
         });
-    }
+    };
     // 设置密码
     this.set_password=function (data,res) {
         var key_arry=[];
