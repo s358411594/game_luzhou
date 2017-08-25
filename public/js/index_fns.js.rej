@@ -1,0 +1,8 @@
+diff a/public/js/index_fns.js b/public/js/index_fns.js	(rejected hunks)
+@@ -173,5 +173,6 @@
+     });
+ });
+ 
++console.log(1)
+ 
+ 
