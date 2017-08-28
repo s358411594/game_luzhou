@@ -108,6 +108,11 @@ function rank_discount() {
                 var majiang_num=Number(s_data.majiang_num)+Number(data.majiang_num);
                 var daer_num=Number(s_data.daer_num)+Number(data.daer_num);
                 var total=[majiang_num,daer_num];
+                var send={
+                    majiang_num:majiang_num,
+                    daer_num:daer_num,
+                    id:data.id
+                };
                 var update = 'UPDATE vip SET majiang_num = ?,daer_num=? WHERE id = '+data["id"]+'';
                 connection.query(update, total, function (err, result) {
                     if (err) {
@@ -115,7 +120,7 @@ function rank_discount() {
                         return;
                     }
                     else {
-                        res.send("充值成功，总数为："+total);
+                        res.send(send);
                     }
                 });
             }

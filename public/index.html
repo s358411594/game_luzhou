@@ -117,27 +117,27 @@
                         <tbody id="message">
                         <tr v-for="todo in todos">
                             <td><input type="checkbox"></td>
-                            <td id="PlayerID" class="PlayerID">{{todo.id}}</td>
+                            <td class="PlayerID">{{todo.id}}</td>
                             <td><a href="#" id="NickName" class="NickName"  >{{todo.v_name}}</a></td>
                             <td><span class="rank" >{{todo.agency}}</span></td>
                             <td class="am-hide-sm-only" id="card_num">
                                 <div>
                                     <div>
                                         <div>大二</div>
-                                        <div>{{todo.daer_num}}</div>
+                                        <div class="daer_num">{{todo.daer_num}}</div>
                                     </div>
                                     <div>
                                         <div>麻将</div>
-                                        <div>{{todo.majiang_num}}</div>
+                                        <div class="majiang_num">{{todo.majiang_num}}</div>
                                     </div>
                                 </div>
                             </td>
                             <td class="am-hide-sm-only">
-                                <button type="button" class="am-btn am-btn-secondary modal do_recharge">充值</button>
-                                <button type="button" class="am-btn am-btn-success">退卡</button>
+                                <button type="button" class="am-btn am-btn-secondary modal do_recharge" do="recharge">充值</button>
+                                <button type="button" class="am-btn am-btn-success modal do_recharge" do="money_back">退卡</button>
                             </td>
                             <td class="am-hide-sm-only">
-                                <button type="button" class="am-btn am-btn-warning do_s_password ">找回</button>
+                                <button type="button" class="am-btn am-btn-warning do_s_password modal">找回</button>
                             </td>
                             <td id="consume">
                                 {{todo.residue_card_num}}
@@ -155,7 +155,6 @@
             <div id="vip_detail" class="details">
                 <div class="listbiaoti am-cf">
                     <ul class="am-icon-flag on">会员管理</ul>
-
                             <div class="am-input-group search">
                               <span class="am-input-group-btn">
                                 <button class="am-btn am-btn-default" type="button" v-on:click="search">
@@ -164,7 +163,6 @@
                               </span>
                                 <input type="text" class="am-form-field">
                             </div>
-
                 </div>
                 <form class="am-form am-g detail">
                     <table width="100%"
@@ -270,9 +268,9 @@
 <div class="modal_box">
     <!--充值-->
     <div class="recharge">
-        <select data-am-selected>
-            <option value="a" selected>大二</option>
-            <option value="b" >麻将</option>
+        <select data-am-selected id="namge_g">
+            <option value="a" selected name_g="daer_num">大二</option>
+            <option value="b" name_g="majiang_num">麻将</option>
         </select>
         <h1>充值：</h1>
         <div class="list list2" id="credit_products">

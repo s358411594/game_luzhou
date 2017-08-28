@@ -61,7 +61,6 @@ $.ajax({
     type: 'get',
     url: "/game_type",
     success:function (data) {
-        console.log(data);
         $("#RoomCard_lzd2").attr("value",data[0].money);
         $("#RoomCard_lzmj").attr("value",data[1].money);
     }
@@ -70,8 +69,6 @@ $.ajax({
 $(".room").click(function () {
     var RoomCard_lzd2=$("input[id='RoomCard_lzd2']").val();//获取大二数据
     var RoomCard_lzmj=$("input[id='RoomCard_lzmj']").val();//获取麻将数据
-    console.log(RoomCard_lzd2);
-    console.log(RoomCard_lzmj);
     $.ajax({
         type: 'post',
         url: "/set_game_type",
@@ -95,12 +92,6 @@ $(".room").click(function () {
         }
     })
 });
-//代理详情
-// $(".PlayerID").text(value.PlayerID);
-// $(".NickName").text(value.NickName);
-// // $("#card_num").text(value.card_num);
-// $("#consume").text(value.consume);
-
 //会员管理
 function show_vip_data() {
         $.ajax({
@@ -111,15 +102,16 @@ function show_vip_data() {
 }
 
 //充值
+var recharge_url;
 $(".point_amount_div").click(function () {
     $(this).addClass("border_red").siblings().removeClass("border_red")
 });
-console.log($(".do_recharge")[0])
-$(document).on("click",".do_recharge",function () {
-    console.log(3)
+$(document).on("click",".modal",function () {
     $(".modal_box").css({display:"flex"});
     if($(this).hasClass("do_recharge")){
-        $(".recharge").css({display:"block"}).siblings().css({display:"none"})
+        recharge_url="/"+$(this).attr("do");
+        $(".recharge").css({display:"block"}).siblings().css({display:"none"});
+        $(this).parent().siblings(".PlayerID").addClass("recharge_c")
     }
     if($(this).hasClass("do_s_password")){
         $(".set_password").css({display:"block"}).siblings().css({display:"none"})
@@ -130,16 +122,34 @@ $(".recharge .save").click(function () {
     $(".modal_box").css({display:"none"});
     var recharge=$(".point_amount_div.border_red").hasClass("newInput")?
         $(".point_amount_div.border_red").find("input").val():
-        $(".point_amount_div.border_red").text()
-    ;
+        $(".point_amount_div.border_red").text();
+    var id=$(".recharge_c").text();
+    var data= {
+        id:id,
+        daer_num:0,
+        majiang_num:0
+    };
+    var name_g=$("#namge_g option:selected").attr("name_g");
+    var money_e=$(".point_amount_div.border_red");
+    var money;
+    if(money_e.hasClass("newInput")){
+        money=$(".point_amount_div.border_red input").val();
+    }
+    else {
+        money=$(".point_amount_div.border_red").text();
+    }
+    data[name_g]=money;
     $.ajax({
         type: 'post',
-        url: "/recharge",
-        data:{
-            recharge:recharge
-        },
+        url: recharge_url,
+        data:data,
         success: function (data) {
-            console.log(data)
+            $(".PlayerID").each(function () {
+                if($(this).text()==data.id){
+                    console.log(data[name_g],$("."+name_g)[0]);
+                    $(this).parent().find("."+name_g).text(data[name_g])
+                }
+            })
         }
     });
 });
@@ -184,18 +194,6 @@ $(".set_password button").click(function () {
     });
 });
 
-$.ajax({
-    type: 'post',
-    url: "/recharge",
-    data:{
-        id:1,
-        daer_num:2,
-        majiang_num:23
-    },
-    success: function (data) {
-        console.log(data)
-    }
-});
 
 
 
